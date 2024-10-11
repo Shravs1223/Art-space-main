@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next Step - Art Space Learning</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('astro_kid_11.jpg'); /* Replace with an art-themed background */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            margin: 0;
+            height: 1200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.9);
+            padding: 15px;
+            text-align: center;
+            position:fixed;
+            top: 0;
+            width: 100%;
+            margin-top: 10px;
+            color: #ff4081;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        header h1 {
+            font-size: 2em; /* Increased font size for a more impactful heading */
+            font-family: 'Montserrat', sans-serif;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(transparent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s infinite; /* Pulsing effect */
+            margin-bottom: 100px;
+            margin-top: 10px;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        main {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 880px;
+            margin-bottom: 50px; /* Added bottom margin */
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2em;
+            color: #ff6587; /* Soft pink for subheadings */
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        h2:hover {
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            color: #ff4081; /* Change color on hover */
+        }
+
+        #video-section {
+    display: flex;                   /* Use flexbox for centering */
+    flex-direction: column;         /* Stack elements vertically */
+    align-items: center;            /* Center elements horizontally */
+    margin-top: 100px;             /* Increase this value to shift lower */
+}
+
+video {
+    width: 100%;
+    height: auto;
+    border: 3px solid #ff4081;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 100px;             /* Adjusted margin above and below the video */
+}
+
+
+        .reference-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .reference-container img {
+            max-width: 100%;
+            height: auto;
+            border: 3px solid #ff4081;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .download-btn {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #ff6587;
+        }
+
+        #compare-button,
+        .button-group button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s;
+        }
+
+        #compare-button:hover,
+        .button-group button:hover {
+            background-color: #ff6587;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .video-instruction {
+            font-size: 1.2em; /* Instruction text size */
+            color: #ff6587; /* Instruction text color */
+            margin-top: 10px; /* Space above the instruction text */
+        }
+        #v1 {
+            margin-top: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Art Space - Learning & Comparison</h1>
+    </header>
+
+    <main>
+        <section>
+            <h2>Step 1: Learn from the video</h2>
+            <p>Watch the video below to learn important techniques for your next assignment.</p>
+        </section>
+
+        <section id="video-section">
+            <h2 id="video-heading">Video Tutorial</h2>
+            <video controls>
+                <source src="WhatsApp Video 2024-10-11 at 1.00.29 PM.mp4" type="video/mp4"> <!-- Replace with actual video source -->
+                Your browser does not support the video tag.
+            </video>
+            <p class="video-instruction">Play the video to learn!</p> <!-- Instruction text below the video -->
+        </section>
+
+        <section>
+            <h2>Step 2: Download Reference Artwork</h2>
+            <p>After watching the video, download the reference artwork and compare your artwork with it.</p>
+        </section>
+
+        <section class="reference-container">
+            <img src="sketch.jpeg" alt="Reference Artwork" id="reference-artwork"> <!-- Replace with actual reference image -->
+            <br>
+            <a href="sketch1.jpeg" download class="download-btn">Download Reference Artwork</a>
+        </section>
+
+        <section>
+            <h2>Step 3: Compare Your Artwork</h2>
+            <p>Once you're ready, you can compare your artwork with the reference. Click the button below to upload and compare your artwork.</p>
+        </section>
+
+        <button id="compare-button" onclick="goToComparisonPage()">Compare Artwork</button>
+
+        <div class="button-group">
+            <button class="redo-btn" onclick="redoAssignment()">Redo Assignment</button>
+            <button class="proceed-btn" onclick="goToNextStep()">Go Ahead</button>
+        </div>
+    </main>
+
+    <script>
+        function goToComparisonPage() {
+            window.location.href = "previouspage.html"; // Replace with the actual URL of the comparison tool page
+        }
+
+        function redoAssignment() {
+            alert("Redirecting to redo your assignment."); // Optionally, redirect to the redo assignment page
+            // Example: window.location.href = "redo-assignment.html"; // Uncomment if you have a redo page
+        }
+
+        function goToNextStep() {
+            alert("Congratulations! Moving on to the next step."); // Redirect to the next step page after comparison
+            // Example: window.location.href = "next-step.html"; // Uncomment if you have a next step page
+        }
+    </script>
+</body>
+
+</html>

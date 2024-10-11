@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ArtSpace</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0f0f0f;
+            color: white;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Dark overlay with less opacity */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4); /* Lighter overlay for better background visibility */
+            z-index: 1;
+        }
+
+        /* Container for the page content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2; /* Ensure content is above the overlay */
+        }
+
+        /* Back button */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #ff6587;
+        }
+
+        /* Page Header */
+        h1 {
+            font-size: 3.5rem;
+            color: #ff4081;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6); /* Stronger text shadow for better readability */
+        }
+
+        /* Sections */
+        section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(37, 37, 37, 0.75); /* Less opaque background for sections */
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #ff6587;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        section p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #f0f0f0;
+        }
+
+        /* Cards for features */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .card {
+            background-color: rgba(51, 51, 51, 0.85); /* Slight transparency for cards */
+            padding: 20px;
+            margin: 10px;
+            flex: 1;
+            min-width: 250px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background-color: rgba(68, 68, 68, 0.9); /* Darken on hover */
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #ff4081;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #e0e0e0;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #b3b3b3;
+        }
+
+        /* Responsive layout */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .cards {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>About Us</h1>
+
+        <section>
+            <h2>Welcome to ArtSpace – Your Universe of Creativity and Exploration</h2>
+            <p>
+                At <strong>ArtSpace</strong>, we believe that creativity has no limits. Whether you're an aspiring artist, an experienced creator, or simply curious about the world of art, we’re here to ignite your passion and guide your creative journey. Our platform is a space where imagination, innovation, and learning collide to form a thriving community of like-minded individuals.
+            </p>
+        </section>
+
+        <section>
+            <h2>What We Do</h2>
+            <p>
+                ArtSpace is an online learning platform designed for artists, creators, and dreamers who want to explore, learn, and grow. We offer a wide range of <strong>courses</strong>, <strong>workshops</strong>, and <strong>events</strong> to help you develop your skills, discover new techniques, and unleash your full creative potential.
+            </p>
+        </section>
+
+        <section>
+            <h2>Our Vision</h2>
+            <p>
+                We envision a world where anyone, anywhere, can unlock their creative potential. Through ArtSpace, we aim to foster a global network of individuals driven by curiosity and passion for art. Our vision is to create a dynamic environment where learning is not just about acquiring skills, but about exploring new possibilities and challenging yourself.
+            </p>
+        </section>
+
+        <section>
+            <h2>Why Choose ArtSpace?</h2>
+            <div class="cards">
+                <div class="card">
+                    <h3>A Creative Community</h3>
+                    <p>
+                        At ArtSpace, you’re part of a vibrant, supportive community. Connect with fellow artists, share your work, and get inspired by others' creations.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Expert Guidance</h3>
+                    <p>
+                        Our courses are led by experienced artists and professionals passionate about teaching and sharing their knowledge.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Flexible Learning</h3>
+                    <p>
+                        Learn at your own pace with flexible online courses and live workshops, designed to fit your schedule.
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Diverse Offerings</h3>
+                    <p>
+                        Explore a wide range of artistic disciplines, from painting and photography to digital illustration, animation, and more.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Our Mission</h2>
+            <p>
+                Our mission is simple: to empower every individual to unlock their creativity. Through ArtSpace, we provide the tools, resources, and community to help you thrive in a constantly evolving artistic world.
+            </p>
+        </section>
+
+        <!-- Back button section -->
+        <button class="back-btn" onclick="window.location.href='HOME.html'">Back to Homepage</button>
+
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>

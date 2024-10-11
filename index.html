@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSpace - Purchase Art Materials</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url(shoppingcart.jpg); /* Add your background image URL here */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .product {
+            background: rgb(209, 81, 188);
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 28%;
+            margin: 10px;
+            min-height: 350px; /* Fixed height for uniformity */
+            display: flex;
+            flex-direction: column; /* Allow children to stack vertically */
+            justify-content: space-between; /* Space items evenly */
+        }
+
+        .product img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+
+        .cart {
+            background: #741e68;
+            border: 2px solid #1a0a0a;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .cart ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart li {
+            margin: 10px 0;
+        }
+
+        button {
+            background-color: #131014;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #19151a;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #100814;
+            color: white;
+        }
+
+        .address-form {
+            margin: 20px auto;
+            max-width: 500px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .address-form input,
+        .address-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .address-form label {
+            font-size: 16px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        select {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to ArtSpace - Buy Art Materials</h1>
+        <nav>
+            <a href="HOME.html">Home</a> <!-- Link to HOME.html -->
+            <a href="#">Shop</a>
+            <a href="contact.html">Contact</a> <!-- Link to contact.html -->
+        </nav>
+    </header>
+
+    <main>
+        <h2></h2>
+        <div class="product-list">
+            <!-- Rangoli Product with Multiple Colors -->
+            <div class="product" data-name="Rangoli" data-price-half="50" data-price-full="100">
+                <img src="rangolii.jpg" alt="Rangoli">
+                <h3>Rangoli</h3>
+                <label>Select Colors:</label>
+                <div>
+                    <label><input type="checkbox" class="rangoli-color" value="Red"> Red</label>
+                    <label><input type="checkbox" class="rangoli-color" value="Green"> Green</label>
+                    <label><input type="checkbox" class="rangoli-color" value="Blue"> Blue</label>
+                    <label><input type="checkbox" class="rangoli-color" value="Yellow"> Yellow</label>
+                    <label><input type="checkbox" class="rangoli-color" value="Black"> Black</label>
+                    <label><input type="checkbox" class="rangoli-color" value="White"> White</label>
+                    <label><input type="checkbox" class="rangoli-color" value="Purple"> Purple</label>
+                    <label><input type="checkbox" class="rangoli-color" value="Pink"> Pink</label>
+                </div>
+                <label for="rangoli-quantity">Select Quantity:</label>
+                <select id="rangoli-quantity">
+                    <option value="half">Half Kg - ₹50</option>
+                    <option value="full">1 Kg - ₹100</option>
+                </select>
+                <input type="number" min="1" value="1" class="quantity">
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            
+            <!-- Other products remain the same -->
+            <div class="product" data-name="Brushes" data-price="100">
+                <img src="brushes.jpg" alt="Water Colors">
+                <h3>Brushes</h3>
+                <p>Price: ₹100</p>
+                <input type="number" min="1" value="1" class="quantity">
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Crayons" data-price="80">
+                <img src="crayons.jpg" alt="Crayons">
+                <h3>Crayons</h3>
+                <p>Price: ₹80</p>
+                <input type="number" min="1" value="1" class="quantity">
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Paint" data-price="150">
+                <img src="PAINT.jpg" alt="Paint">
+                <h3>Paint</h3>
+                <p>Price: ₹150</p>
+                <input type="number" min="1" value="1" class="quantity">
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+            <div class="product" data-name="Sketching Pencils" data-price="150">
+                <img src="sketchingpencils.jpg" alt="Sketching Pencils">
+                <h3>Sketching Pencils</h3>
+                <p>Price: ₹150</p>
+                <input type="number" min="1" value="1" class="quantity">
+                <button class="add-to-cart">Add to Cart</button>
+            </div>
+        </div>
+
+        <div class="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-amount">Total: ₹0</p>
+            <button id="checkout">Proceed to Checkout</button>
+        </div>
+
+        <div class="address-form" style="display: none;">
+            <h3>Enter Your Details</h3>
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" placeholder="Your Full Name">
+            <label for="address">Address:</label>
+            <textarea id="address" rows="4" placeholder="Your Address"></textarea>
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" placeholder="Your Phone Number">
+            <button id="pay-now">Proceed to Payment</button>
+        </div>
+    </main>
+
+    <footer>
+        
+    </footer>
+
+    <script>
+        const cartItems = [];
+        const cartItemsList = document.getElementById("cart-items");
+        const totalAmount = document.getElementById("total-amount");
+        const addressForm = document.querySelector(".address-form");
+
+        document.querySelectorAll(".add-to-cart").forEach(button => {
+            button.addEventListener("click", () => {
+                const product = button.parentElement;
+                let name = product.dataset.name;
+                let price = parseFloat(product.dataset.price);
+
+                if (name === "Rangoli") {
+                    const selectedColors = Array.from(document.querySelectorAll(".rangoli-color:checked")).map(input => input.value);
+                    const quantityType = document.getElementById("rangoli-quantity").value;
+                    const basePrice = quantityType === "half" ? parseFloat(product.dataset.priceHalf) : parseFloat(product.dataset.priceFull);
+                    price = basePrice;
+
+                    selectedColors.forEach(color => {
+                        const colorName = `Rangoli (${color}, ${quantityType === "half" ? "Half Kg" : "1 Kg"})`;
+                        const existingItem = cartItems.find(item => item.name === colorName);
+
+                        const quantity = parseInt(product.querySelector(".quantity").value);
+
+                        if (existingItem) {
+                            existingItem.quantity += quantity;
+                        } else {
+                            cartItems.push({ name: colorName, price: basePrice, quantity });
+                        }
+                    });
+                } else {
+                    const quantity = parseInt(product.querySelector(".quantity").value);
+                    const existingItem = cartItems.find(item => item.name === name);
+
+                    if (existingItem) {
+                        existingItem.quantity += quantity;
+                    } else {
+                        cartItems.push({ name, price, quantity });
+                    }
+                }
+
+                updateCart();
+            });
+        });
+
+        function updateCart() {
+            cartItemsList.innerHTML = "";
+            let total = 0;
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const li = document.createElement("li");
+                li.textContent = `${item.name} (x${item.quantity}) - ₹${itemTotal.toFixed(2)}`;
+                cartItemsList.appendChild(li);
+            });
+
+            totalAmount.textContent = `Total: ₹${total.toFixed(2)}`;
+        }
+
+        document.getElementById("checkout").addEventListener("click", () => {
+            if (cartItems.length === 0) {
+                alert("Your cart is empty!");
+            } else {
+                document.querySelector(".cart").style.display = "none";
+                addressForm.style.display = "block";
+            }
+        });
+
+        document.getElementById("pay-now").addEventListener("click", () => {
+            const name = document.getElementById("name").value;
+            const address = document.getElementById("address").value;
+            const phone = document.getElementById("phone").value;
+
+            if (name && address && phone) {
+                alert("Proceeding to payment gateway...");
+                // Implement payment gateway integration here
+            } else {
+                alert("Please fill all the details.");
+            }
+        });
+    </script>
+</body>
+</html>

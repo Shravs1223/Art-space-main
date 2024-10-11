@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArtSpace - User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        
+        header {
+            background-color: #131014;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-section {
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .video-section h2 {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #100814;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        
+        .video {
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .video-title {
+            text-align: center;
+            padding: 10px;
+            font-weight: bold;
+        }
+
+        .video iframe {
+            width: 100%;
+            height: 200px;
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .show {
+            display: block; /* Show the video when clicked */
+        }
+
+        .cart-button {
+            background-color: #131014;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cart-button:hover {
+            background-color: #19151a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to ArtSpace</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="index.html">Shopping Cart</a>
+            <a href="#">Video Lectures</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h3>Shopping Cart</h3>
+            <p>Manage your purchases easily!</p>
+            <button class="cart-button" onclick="window.location.href='index.html'">Go to Cart</button>
+        </div>
+
+        <div class="card">
+            <h3>Video Lectures</h3>
+            <p>Explore our courses and improve your skills!</p>
+            <button class="cart-button" onclick="document.getElementById('video-section').scrollIntoView();">View Lectures</button>
+        </div>
+
+        <div class="card">
+            <h3>Support</h3>
+            <p>Need help? Contact us!</p>
+            <button class="cart-button">Get Support</button>
+        </div>
+    </div>
+
+    <div class="video-section" id="video-section">
+        <h2>Video Lectures</h2>
+        <div class="video">
+            <img src="thumbnail1.jpg" alt="Video 1" onclick="toggleVideo(this);">
+            <div class="video-title">Video Title 1</div>
+            <iframe src="https://www.youtube.com/embed/video1" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="video">
+            <img src="thumbnail2.jpg" alt="Video 2" onclick="toggleVideo(this);">
+            <div class="video-title">Video Title 2</div>
+            <iframe src="https://www.youtube.com/embed/video2" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <!-- Add more videos as needed -->
+    </div>
+
+    <footer>
+        <p>&copy; 2024 ArtSpace. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleVideo(thumbnail) {
+            const iframe = thumbnail.nextElementSibling.nextElementSibling; // Select the corresponding iframe
+            if (iframe.classList.contains('show')) {
+                iframe.classList.remove('show');
+            } else {
+                const allIframes = document.querySelectorAll('.video iframe');
+                allIframes.forEach(vid => vid.classList.remove('show')); // Hide other videos
+                iframe.classList.add('show'); // Show the clicked video
+            }
+        }
+    </script>
+</body>
+</html>

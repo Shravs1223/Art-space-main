@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO ARTSPACE</title>
+    <style>
+        /* General reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Container for the entire page */
+        .container {
+            text-align: center;
+            padding: 100px 20px;
+            color: white; /* Ensures text contrasts with the background */
+        }
+
+        /* Logo and header styling */
+        h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-shadow: 3px 3px 10px rgba(128, 46, 117, 0.8); /* Increased shadow for better visibility */
+        }
+
+        /* Navigation styling */
+        nav {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 10px;
+           border-color: #ff4081;
+            border-radius: 10px;
+        }
+
+        nav a {
+            font-size: 1.2rem;
+            text-decoration: none;
+            color: rgb(241, 240, 226);
+            padding: 10px 20px;
+            background-color: rgba(39, 9, 30, 0.7); /* More opaque for better text readability */
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+        }
+
+        nav a:hover {
+            background-color: #ff4081;
+            transform: scale(1.1); /* Enlarge slightly on hover */
+        }
+
+        /* Get Started Button */
+        .get-started {
+            margin: 40px 0;
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            color: white;
+            background-color: #ff4081;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .get-started:hover {
+            background-color: #ff6587;
+            transform: translateY(-5px); /* Move slightly upwards on hover */
+        }
+
+        /* Footer placeholder */
+        footer {
+            margin-top: 50px;
+        }
+        
+        /* Background video styling */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1; /* Send the video behind other content */
+        }
+
+        video {
+            min-width: 100%;
+            min-height: 100%;
+            margin-top: -200px;
+            object-fit: cover; /* Ensure the video covers the entire screen */
+        }
+
+        #i1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 135%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1; /* Place behind the content */
+            opacity: 1; /* Ensures full brightness */
+        }
+
+        /* Admin login styling */
+        .admin-login-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .admin-login-container img {
+            width: 30px;
+            height: 30px;
+            margin-bottom: 5px;
+        }
+
+        .admin-login {
+            background-color: rgba(39, 9, 30, 0.7);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .admin-form {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .admin-form input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100%;
+        }
+
+        .admin-form button {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .admin-form button:hover {
+            background-color: #ff6587;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo & Website Name -->
+        <h1>WELCOME TO ARTSPACE</h1>
+
+        <!-- Navigation Bar -->
+        <nav>
+            <a href="ABOUTUS.html" onclick="redirectTo('about-us')">About Us</a>
+            <a href="courses.html" onclick="redirectTo('courses')">Courses</a>
+            <a href="events.html" onclick="redirectTo('events')">Events</a>
+            <a href="contact.html" onclick="redirectTo('contact-us')">Contact Us</a>
+            <a href="index.html" onclick="redirectTo('art-kit')">Art Kit</a> <!-- New Tab for Art Kit -->
+        </nav>
+
+        <!-- Background Image -->
+        <div id="i1"></div>
+        <div class="video-background">
+            <video autoplay muted loop id="background-video">
+                <source src="your-video-file.mp4.mp4.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Get Started Button -->
+        <button class="get-started" onclick="redirectTo('login-register')">Get Started</button>
+
+        <!-- Footer Placeholder -->
+        <footer></footer>
+    </div>
+
+    <!-- Admin Login Button and Icon -->
+    <div class="admin-login-container">
+        <!-- Small admin icon in the top right corner -->
+        <img src="admin-logo.png" alt="Admin Icon" class="admin-icon">
+        <div class="admin-login" onclick="toggleAdminForm()">
+            Admin Login
+        </div>
+    </div>
+
+    <!-- Admin Login Form -->
+    <div class="admin-form" id="adminForm">
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="adminLogin()">Login</button>
+        <div class="error-message" id="errorMessage"></div>
+    </div>
+
+    <!-- JavaScript for redirection and admin login -->
+    <script>
+        function redirectTo(page) {
+            switch(page) {
+                case 'about-us':
+                    window.location.href = 'about-us.html';
+                    break;
+                case 'courses':
+                    window.location.href = 'courses.html';
+                    break;
+                case 'events':
+                    window.location.href = 'events.html';
+                    break;
+                case 'contact-us':
+                    window.location.href = 'contact-us.html';
+                    break;
+                case 'login-register':
+                    window.location.href = 'login-register.html';
+                    break;
+                case 'art-kit': // New Art Kit redirection
+                    window.location.href = 'index.html'; // Redirect to art kit shopping page
+                    break;
+                default:
+                    console.log("Page not found");
+            }
+        }
+
+        function toggleAdminForm() {
+            const form = document.getElementById('adminForm');
+            form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function adminLogin() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+
+            if (username === 'artspace' && password === 'artist') {
+                alert('Admin login successful');
+                window.location.href = 'admin-dashboard.html'; // Redirect to admin dashboard
+            } else {
+                errorMessage.textContent = 'Wrong username or password';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - ArtSpace</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d0d0e;
+        }
+        header {
+            background-color: #160202;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        .nav {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .nav button {
+            padding: 10px;
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .nav button:hover {
+            background-color: #f5f2f4;
+        }
+        .card {
+            margin: 20px;
+            padding: 20px;
+            background-color: rgb(240, 235, 239);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+        th {
+            background-color: #f5f3f4;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Admin Dashboard - ArtSpace</h1>
+</header>
+
+<div class="nav">
+    <button onclick="showSection('userManagement')">User Management</button>
+    <button onclick="showSection('courses')">Courses</button>
+    <button onclick="showSection('events')">Events</button>
+    <button onclick="showSection('contactUs')">Contact Us</button>
+    <button onclick="showSection('reports')">Reports</button>
+</div>
+
+<div class="card" id="userManagement">
+    <h3>User Management</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="userTable">
+            <!-- Users will be loaded dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<div class="card" id="courses" style="display:none;">
+    <h3>Courses</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Course Name</th>
+                <th>Instructor</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="courseTable">
+            <!-- Courses will be loaded dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<div class="card" id="events" style="display:none;">
+    <h3>Events</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="eventTable">
+            <!-- Events will be loaded dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<div class="card" id="contactUs" style="display:none;">
+    <h3>Contact Us Inquiries</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="contactTable">
+            <!-- Contact Us messages will be loaded dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<div class="card" id="reports" style="display:none;">
+    <h3>Reports</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Selected Course</th>
+                <th>Order History</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        <tbody id="reportTable">
+            <!-- Reports will be loaded dynamically -->
+        </tbody>
+    </table>
+</div>
+
+<script>
+    // Sample Data
+    const sampleUsers = [
+        { name: "Shriya Sharma", email: "shriya@example.com", username: "shriya_s", password: "password123" },
+        { name: "Manisha Patel", email: "manisha@example.com", username: "manisha_p", password: "password123" },
+        { name: "Sunil Gupta", email: "sunil@example.com", username: "sunil_g", password: "password123" },
+        { name: "Komal Verma", email: "komal@example.com", username: "komal_v", password: "password123" },
+        { name: "Sahil Mehta", email: "sahil@example.com", username: "sahil_m", password: "password123" }
+    ];
+
+    const fixedCourses = [
+        { name: "Sketching", instructor: "John Doe" },
+        { name: "Drawing", instructor: "Jane Smith" },
+        { name: "Painting", instructor: "Alice Green" },
+        { name: "Rangoli", instructor: "Bob Brown" }
+    ];
+
+    const sampleEvents = [
+        { name: "Art Exhibition", date: "2024-11-20", location: "Art Gallery" },
+        { name: "Weekend Workshop", date: "2024-12-01", location: "Community Center" },
+        { name: "Live Painting", date: "2024-11-15", location: "City Park" },
+        { name: "Sculpture Contest", date: "2024-12-10", location: "Museum" },
+        { name: "Photography Contest", date: "2024-11-30", location: "Downtown" }
+    ];
+
+    const sampleContacts = [
+        { name: "Sam Wilson", email: "sam@example.com", message: "I want to know about your courses." },
+        { name: "Peter Parker", email: "peter@example.com", message: "What events do you have planned?" },
+        { name: "Tony Stark", email: "tony@example.com", message: "Can I schedule a private session?" },
+        { name: "Bruce Wayne", email: "bruce@example.com", message: "Do you offer discounts for groups?" },
+        { name: "Clark Kent", email: "clark@example.com", message: "I have a question about registration." }
+    ];
+
+    const sampleReports = [
+        { username: "shriya_s", selectedCourse: "Painting", orderHistory: "Order #1: Art Supplies, Order #2: Sketchbook", contact: "shriya@example.com" },
+        { username: "manisha_p", selectedCourse: "Sketching", orderHistory: "Order #1: Sketching Pencils", contact: "manisha@example.com" },
+        { username: "sunil_g", selectedCourse: "Drawing", orderHistory: "Order #1: Drawing Paper, Order #2: Colored Pencils", contact: "sunil@example.com" },
+        { username: "komal_v", selectedCourse: "Rangoli", orderHistory: "Order #1: Rangoli Colors", contact: "komal@example.com" },
+        { username: "sahil_m", selectedCourse: "Painting", orderHistory: "Order #1: Canvas, Order #2: Brushes", contact: "sahil@example.com" }
+    ];
+
+    // Function to load users and display in the user management table
+    function loadUsers() {
+        const userTable = document.getElementById('userTable');
+        userTable.innerHTML = '';
+
+        sampleUsers.forEach((user, index) => {
+            const row = `<tr>
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.username}</td>
+                <td>${user.password}</td>
+                <td><button class="action-btn" onclick="deleteUser(${index})">Delete</button></td>
+            </tr>`;
+            userTable.innerHTML += row;
+        });
+    }
+
+    // Function to load fixed courses and display in the courses table
+    function loadCourses() {
+        const courseTable = document.getElementById('courseTable');
+        courseTable.innerHTML = '';
+
+        fixedCourses.forEach(course => {
+            const row = `<tr>
+                <td>${course.name}</td>
+                <td>${course.instructor}</td>
+                <td><button class="action-btn">Edit</button></td>
+            </tr>`;
+            courseTable.innerHTML += row;
+        });
+    }
+
+    // Function to load events and display in the events table
+    function loadEvents() {
+        const eventTable = document.getElementById('eventTable');
+        eventTable.innerHTML = '';
+
+        sampleEvents.forEach(event => {
+            const row = `<tr>
+                <td>${event.name}</td>
+                <td>${event.date}</td>
+                <td>${event.location}</td>
+                <td><button class="action-btn">Edit</button></td>
+            </tr>`;
+            eventTable.innerHTML += row;
+        });
+    }
+
+    // Function to load contact inquiries and display in the contact table
+    function loadContacts() {
+        const contactTable = document.getElementById('contactTable');
+        contactTable.innerHTML = '';
+
+        sampleContacts.forEach(contact => {
+            const row = `<tr>
+                <td>${contact.name}</td>
+                <td>${contact.email}</td>
+                <td>${contact.message}</td>
+                <td><button class="action-btn">Respond</button></td>
+            </tr>`;
+            contactTable.innerHTML += row;
+        });
+    }
+
+    // Function to load reports and display in the reports table
+    function loadReports() {
+        const reportTable = document.getElementById('reportTable');
+        reportTable.innerHTML = '';
+
+        sampleReports.forEach(report => {
+            const row = `<tr>
+                <td>${report.username}</td>
+                <td>${report.selectedCourse}</td>
+                <td>${report.orderHistory}</td>
+                <td>${report.contact}</td>
+            </tr>`;
+            reportTable.innerHTML += row;
+        });
+    }
+
+    // Function to delete a user
+    function deleteUser(index) {
+        sampleUsers.splice(index, 1); // Remove user by index
+        loadUsers(); // Reload table after deletion
+    }
+
+    // Function to show the selected section and load data
+    function showSection(section) {
+        const sections = ['userManagement', 'courses', 'events', 'contactUs', 'reports'];
+        sections.forEach(sec => {
+            document.getElementById(sec).style.display = (sec === section) ? 'block' : 'none';
+        });
+        // Load corresponding data
+        if (section === 'userManagement') loadUsers();
+        if (section === 'courses') loadCourses();
+        if (section === 'events') loadEvents();
+        if (section === 'contactUs') loadContacts();
+        if (section === 'reports') loadReports();
+    }
+
+    // Load users when the page loads
+    window.onload = () => {
+        loadUsers(); // Load users by default
+    };
+</script>
+
+</body>
+</html>
